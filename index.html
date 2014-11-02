@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+	<!--
+	<script src="EaselJS./src/createjs/events/Event.js"></script>
+	<script src="EaselJS/src/createjs/events/EventDispatcher.js"></script>
+	<script src="EaselJS/src/createjs/utils/IndexOf.js"></script>
+	<script src="EaselJS/src/createjs/utils/Ticker.js"></script>
+	<script src="EaselJS/src/easeljs/utils/UID.js"></script>
+	<script src="EaselJS/src/easeljs/events/MouseEvent.js"></script>
+	<script src="EaselJS/src/easeljs/geom/Matrix2D.js"></script>
+	<script src="EaselJS/src/easeljs/geom/Point.js"></script>
+	<script src="EaselJS/src/easeljs/geom/Rectangle.js"></script>
+	<script src="EaselJS/src/easeljs/ui/ButtonHelper.js"></script>
+	<script src="EaselJS/src/easeljs/display/Shadow.js"></script>
+	<script src="EaselJS/src/easeljs/display/SpriteSheet.js"></script>
+	<script src="EaselJS/src/easeljs/display/Graphics.js"></script>
+	<script src="EaselJS/src/easeljs/display/DisplayObject.js"></script>
+	<script src="EaselJS/src/easeljs/display/Container.js"></script>
+	<script src="EaselJS/src/easeljs/display/Stage.js"></script>
+	<script src="EaselJS/src/easeljs/display/Bitmap.js"></script>
+	<script src="EaselJS/src/easeljs/display/Sprite.js"></script>
+	<script src="EaselJS/src/easeljs/display/BitmapAnimation.js"></script>
+	<script src="EaselJS/src/easeljs/display/Shape.js"></script>
+	<script src="EaselJS/src/easeljs/display/Text.js"></script>
+	<script src="EaselJS/src/easeljs/display/BitmapText.js"></script>
+	<script src="EaselJS/src/easeljs/utils/SpriteSheetUtils.js"></script>
+	<script src="EaselJS/src/easeljs/utils/SpriteSheetBuilder.js"></script>
+	<script src="EaselJS/src/easeljs/display/DOMElement.js"></script>
+	<script src="EaselJS/src/easeljs/filters/Filter.js"></script>
+	<script src="EaselJS/src/easeljs/filters/BlurFilter.js"></script>
+	<script src="EaselJS/src/easeljs/filters/AlphaMapFilter.js"></script>
+	<script src="EaselJS/src/easeljs/filters/AlphaMaskFilter.js"></script>
+	<script src="EaselJS/src/easeljs/filters/ColorFilter.js"></script>
+	<script src="EaselJS/src/easeljs/filters/ColorMatrix.js"></script>
+	<script src="EaselJS/src/easeljs/filters/ColorMatrixFilter.js"></script>
+	<script src="EaselJS/src/easeljs/ui/Touch.js"></script>
+	<script src="EaselJS/src/easeljs/version.js"></script>
+	-->
+	
+	<script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+	
+	<script>
+		function Ship() {
+			this.img = "img/ships/default.png";
+			this.rotationDir = 0; // <-- = -1; --> = 1
+		}
+
+		function init() {
+
+			var stage = new createjs.Stage("demoCanvas");
+			
+			var ship = new createjs.Bitmap("img/ships/default.png");
+			ship.x = ship.y = 50;
+			stage.addChild(ship);
+
+			stage.update();
+
+			// Register Keyboard Input
+			document.addEventListener('keydown', function(event) {
+				// A <--
+				if(event.keyCode == 65) {
+					//alert('<--');
+					ship.rotation -= 45;
+					stage.update();
+				}
+				
+				// D -->
+				else if(event.keyCode == 68) {
+					//alert('-->');
+					ship.rotation += 45;
+					stage.update();
+				}
+			});
+
+			// Ticker
+			createjs.Ticker.addEventListener("tick", tick);
+			function tick() {
+				ship.rotation += 1;
+				stage.update();
+			}
+		}
+	</script>
+</head>
+<body onLoad="init();">
+	<canvas id="demoCanvas" width="500" height="300">
+		alternate content
+	</canvas>
+</body>
+</html>
